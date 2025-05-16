@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs", "torch", "pytorch-cuda"]
+build-backend = "hatchling.build"
+
+[project]
+name = "featup"
+version = "0.1.2"
+description = "Official code for \"FeatUp: A Model-Agnostic Frameworkfor Features at Any Resolution\" ICLR 2024"
+readme = "README.md"
+authors = [
+    { name = "Mark Hamilton", email = "markth@mit.edu" },
+    { name = "Stephanie Fu", email = "fus@berkeley.edu" },
+]
+requires-python = ">=3.6"
+license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "torch",
+    "kornia",
+    "omegaconf",
+    "pytorch-lightning",
+    "torchvision",
+    "tqdm",
+    "torchmetrics",
+    "scikit-learn",
+    "numpy",
+    "matplotlib",
+    "timm==0.4.12",
+]
+
+[project.urls]
+Homepage = "https://github.com/mhamilton723/FeatUp"
+
+[tool.hatch.build]
+packages = ["featup"]
+
+# Custom build extension for torch C++/CUDA extensions
+[tool.hatch.build.hooks.custom]
+path = "hatch_build.py"
